@@ -1,13 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.site-name {
+  font-size: 3rem;
+  text-align: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8em;
+  width: 30%;
+  margin: auto;
+}
+
+.input-container, .submit-button {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+#create-acc-button, #signin-button {
+  font-family: inherit;
+  width: 15%;
+  margin: auto;
+  font-size: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  margin-top: 1em;
+}
+
+#wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1em;
+  width: 100%;
+}
+
+#mychats-container {
+  width: 35%;
+}
+
+#chatbox-container {
+  width: 65%;
+}
+
+#chats-container > ul {
+  list-style: none;
+}
+
+#chat-box {
+  min-height: 30em;
+  background-color: lightgray;
+}
+
+#name {
+  font-size: 1.2rem;
+}
+
+#my-chats-text {
+  font-size: 1.5rem;
 }
