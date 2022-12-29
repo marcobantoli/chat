@@ -36,7 +36,7 @@ function Register({ handleRegister }) {
           <input className="input-container" type="password" name="confirmPassword" value={formData.confirmPassword} placeholder="Confirm password" onChange={handleChange} />
           <button className="submit-button" type="submit">Login</button>
         </form>
-        <button id="signin-button" onClick={() => navigate('/login')}>Sign in instead</button>
+        <button id="signin-button" onClick={() => navigate('/')}>Sign in instead</button>
       </div>
     </>
   )
