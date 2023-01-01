@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
+}
+
+ul {
+  list-style: none;
 }
 
 .site-name {
@@ -54,10 +63,6 @@ body {
   width: 65%;
 }
 
-#chats-container > ul {
-  list-style: none;
-}
-
 #chat-box {
   min-height: 30em;
   background-color: lightgray;
@@ -88,4 +93,62 @@ body {
 
 #select, label {
   font-size: 2rem;
+}
+
+#chat-page-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 4fr 1fr;
+}
+
+#room-info-container {
+  grid-row-start: span 2;
+  padding: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 8em;
+}
+
+#room-name {
+  font-size: 1.2rem;
+}
+
+#leave-room-button {
+  width: 50%;
+}
+
+#send-message-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+  width: 80%;
+  padding-left: 1.5em;
+}
+
+#send-message-area {
+  resize: none;
+  font-size: 1rem;
+  font-family: inherit;
+  width: 90%;
+}
+
+#messages-list-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2em;
+  padding-left: 1.5em;
+  padding-right: 1.5em;
+  width: 70%;
+  overflow-y: auto;
+  max-height: 75vh;
+}
+
+.message-container {
+  min-height: 5%;
+  padding: 1em;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
 }

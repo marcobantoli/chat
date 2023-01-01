@@ -18,7 +18,7 @@ function Login({ handleLogin }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    handleLogin(formData.email, formData.password)
+    handleLogin(formData.email)
   }
 
   return (

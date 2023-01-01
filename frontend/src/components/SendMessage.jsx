@@ -1,6 +1,9 @@
 function SendMessage() {
   return (
-    <div>SendMessage</div>
+    <div id="send-message-container">
+      <textarea id="send-message-area" />
+      <button>Send Message</button>
+    </div>
   )
 }
 
