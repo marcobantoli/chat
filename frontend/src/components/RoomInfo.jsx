@@ -7,7 +7,13 @@ function RoomInfo({ username, room, socket }) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // watch socket emits from server to see if a user has joined
+    socket.on('join_room', data => {
+      setUsers(prevState => [...prevState, { name: data.username }])
+    })
+
+    return () => {
+      socket.off('join_room')
+    }
   }, [socket])
 
   const handleLeaveRoom = () => {
@@ -28,7 +34,7 @@ function RoomInfo({ username, room, socket }) {
       <div>
         Users:
         <ul>
-          {users.map(user => <li>user</li>)}
+          {users.map(user => <li>{user.name}</li>)}
         </ul>
       </div>
       <button id="leave-room-button" onClick={handleLeaveRoom}>Leave Room</button>

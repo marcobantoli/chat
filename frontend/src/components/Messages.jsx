@@ -5,9 +5,13 @@ function Messages({ socket }) {
 
   // useEffect here to fetch the messages from the database
   useEffect(() => {
-    socket.on('receive_message', (data) => {
+    socket.on('receive_message', data => {
       setMessages(prevState => [...prevState, { message: data }])
     })
+
+    return () => {
+      socket.off('receive_message')
+    }
   }, [socket])
 
   return (

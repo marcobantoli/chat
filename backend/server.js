@@ -7,7 +7,14 @@ const express = require('express')
 const app = express()
 const http = require('http')
 
+// const messages = require('./routes/messageRoutes.js');
+const users = require('./routes/userRoutes.js');
+
 app.use(cors())
+app.use(express.json())
+
+app.use('/users', users)
+// app.use('/messages', messages)
 
 const server = http.createServer(app)
 
