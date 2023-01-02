@@ -1,24 +1,18 @@
-function Messages() {
+import { useState, useEffect } from 'react'
+
+function Messages({ socket }) {
+  const [messages, setMessages] = useState([])
+
+  // useEffect here to fetch the messages from the database
+  useEffect(() => {
+    socket.on('receive_message', (data) => {
+      setMessages(prevState => [...prevState, { message: data }])
+    })
+  }, [socket])
+
   return (
     <div id="messages-list-container">
-      <div className="message-container">1</div>
-      <div className="message-container">2</div>
-      <div className="message-container">3</div>
-      <div className="message-container">4</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
-      <div className="message-container">5</div>
+      {messages.map((msg, i) => <div className="message-container" key={i}>{msg.message}</div>)}
     </div>
   )
 }

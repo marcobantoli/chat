@@ -10,7 +10,7 @@ const socket = io('http://localhost:5000')
 
 function App() {
   const [username, setUsername] = useState({})
-  const [room, setRoom] = useState({})
+  const [room, setRoom] = useState('javascript')
 
   const navigate = useNavigate()
 
@@ -24,11 +24,11 @@ function App() {
       <Route path='/' element={<Login handleLogin={handleLogin} />} />
       <Route path='/register' element={<Register />} />
       <Route path="/join-room" element={<JoinRoom username={username} room={room} setRoom={setRoom} socket={socket} />} />
-      <Route path="/chat" element={<Chat />} />
+      <Route path="/chat" element={<Chat username={username} room={room} socket={socket} />} />
     </Routes>
   )
 }
 
-// for now last route is /chat
+// for now last route is /chat (maybe should have separate urls for chatrooms)
 
 export default App

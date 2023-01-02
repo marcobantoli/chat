@@ -138,17 +138,17 @@ ul {
   display: flex;
   flex-direction: column-reverse;
   gap: 2em;
-  padding-left: 1.5em;
-  padding-right: 1.5em;
+  padding: 1.5em;
   width: 70%;
   overflow-y: auto;
   max-height: 75vh;
+  background-color: lightgray;
 }
 
 .message-container {
   min-height: 5%;
   padding: 1em;
-  background-color: blue;
+  background-color: white;
   border-radius: 5px;
-  color: white;
+  color: black;
 }
