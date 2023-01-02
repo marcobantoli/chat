@@ -1,7 +1,7 @@
-require('dotenv').config();
-const User = require('../models/userModel');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+require("dotenv").config();
+const User = require("../models/userModel");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 
 const loginUser = async (req, res) => {
   const user = await User.get(req.body.username);
@@ -10,7 +10,10 @@ const loginUser = async (req, res) => {
     return res.sendStatus(400);
   }
   try {
-    const match = await bcrypt.compare(req.body.password, user.rows[0].password);
+    const match = await bcrypt.compare(
+      req.body.password,
+      user.rows[0].password
+    );
     if (match) {
       const accessToken = generateToken(user.rows[0].user_id);
       res.status(201).json({ accessToken });
@@ -28,30 +31,34 @@ const registerUser = async (req, res) => {
   }
 
   try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
-    const returnVal = await User.register(req.body.username, hashedPassword, req.body.email);
+    const hashedPassword = await bcrypt.hash(req.body.password, 10);
+    const returnVal = await User.register(
+      req.body.username,
+      hashedPassword,
+      req.body.email
+    );
     const userId = returnVal.rows[0].user_id;
 
     res.status(201).json({ token: generateToken(userId) });
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.sendStatus(500);
   }
 };
 
 const getMe = async (req, res) => {
-    const userId = req.userId;
+  const userId = req.userId;
 
-    const getUser =  await User.getById(userId);
+  const getUser = await User.getById(userId);
 
-    const username = getUser.rows[0].username;
+  const username = getUser.rows[0].username;
 
-    res.status(200).json({ username: username, userId: userId });
+  res.status(200).json({ username: username, userId: userId });
 };
 
 const generateToken = (id) => {
   return jwt.sign(id, process.env.ACCESS_TOKEN_SECRET);
-}
+};
 
 const getAllUsers = async (req, res) => {
   try {
@@ -72,9 +79,9 @@ const getUser = async (req, res) => {
 };
 
 module.exports = {
-    loginUser,
-    registerUser,
-    getMe,
-    getAllUsers,
-    getUser
+  loginUser,
+  registerUser,
+  getMe,
+  getAllUsers,
+  getUser,
 };
