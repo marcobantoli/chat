@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const loginUser = async (req, res) => {
-  const user = await User.get(req.body.username);
+  const user = await User.get(req.body.email);
 
   if (!user) {
     return res.sendStatus(400);

@@ -27,18 +27,37 @@ const io = new Server(server, {
   },
 });
 
-let chatRooms = [];
+let usersInARoom = [];
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
 
   socket.on("join_room", (data) => {
     socket.join(data.room);
+
+    usersInARoom.push({
+      id: socket.id,
+      username: data.username,
+      room: data.room,
+    });
+
+    const usersInRoom = usersInARoom.filter((user) => user.room === data.room);
+    console.log(usersInRoom);
+
+    io.in(data.room).emit("user_joined", usersInRoom);
   });
 
   socket.on("send_message", (data) => {
     const { message, room } = data;
     io.in(room).emit("receive_message", message);
+  });
+
+  socket.on("leave_room", (data) => {
+    socket.leave(data);
+
+    usersInARoom = usersInARoom.filter((user) => user.id !== socket.id);
+
+    io.in(data).emit("user_left", usersInARoom);
   });
 });
 

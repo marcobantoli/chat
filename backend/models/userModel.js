@@ -2,8 +2,8 @@ const pool = require("../config/db.js");
 
 const User = {};
 
-User.get = (username) => {
-  return pool.query("SELECT * FROM users WHERE username=$1", [username]);
+User.get = (email) => {
+  return pool.query("SELECT * FROM users WHERE email=$1", [email]);
 };
 
 User.register = (username, password, email) => {
